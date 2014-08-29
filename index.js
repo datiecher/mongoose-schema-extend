@@ -56,24 +56,26 @@ var oldInit = Model.prototype.init;
 Model.prototype.init = function(doc, query, fn) {
   var key = this.schema.options['discriminatorKey'];
   if(key) {
-    var newFn = function() {
-      // this is pretty ugly, but we need to run the code below before the callback
-      process.nextTick(function() {
-        fn.apply(this, arguments);
-      });
-    }
-    var obj = oldInit.call(this, doc, query, newFn);
 
     // If the discriminatorField contains a model name, we set the documents prototype to that model
     var type = doc[key];
-    var model = mongoose.models[type];
-    if(model) {
+      // this will throw exception if the model isn't registered
+    if(type) {
+      var model = (this.db.models? this.db.models[type] : mongoose.models[type]);
+      var newFn = function() {
+        // this is pretty ugly, but we need to run the code below before the callback
+        process.nextTick(function() {
+          fn.apply(this, arguments);
+        });
+      }
+      var modelInstance = new model();
+      this.schema = model.schema;
+      var obj = oldInit.call(this, doc, query, newFn);
       obj.__proto__ = model.prototype;
+      return obj;
     }
-
-    return obj;
-  } else {
-    // If theres no discriminatorKey we can just call the original method
-    return oldInit.apply(this, arguments);
   }
+
+  // If theres no discriminatorKey we can just call the original method
+  return oldInit.apply(this, arguments);
 }
