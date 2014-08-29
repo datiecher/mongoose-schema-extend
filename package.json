@@ -20,9 +20,18 @@
   ],
   "author": "Brian Kirchoff <briankircho@gmail.com>",
   "contributors": [
-    { "name": "Brian Kirchoff", "email": "briankircho@gmail.com" },
-    { "name": "Ajay Sabhaney", "email": "ajay@mothercreative.com" },
-    { "name": "Nicholas Calugar", "email" : "njcalugar@gmail.com" }
+    {
+      "name": "Brian Kirchoff",
+      "email": "briankircho@gmail.com"
+    },
+    {
+      "name": "Ajay Sabhaney",
+      "email": "ajay@mothercreative.com"
+    },
+    {
+      "name": "Nicholas Calugar",
+      "email": "njcalugar@gmail.com"
+    }
   ],
   "license": "BSD",
   "dependencies": {
@@ -30,7 +39,7 @@
   },
   "devDependencies": {
     "mocha": "~1.3.2",
-    "should": "~1.1.0",
-    "mongoose": "~3.5.7"
+    "mongoose": "^3.8.15",
+    "should": "~1.1.0"
   }
 }
