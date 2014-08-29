@@ -41,7 +41,7 @@
     }
   ],
   "dependencies": {
-    "owl-deepcopy": "~0.0.1",
+    "owl-deepcopy": "~0.0.1"
   },
   "devDependencies": {
     "mocha": "^1.21.4",
