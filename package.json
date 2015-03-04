@@ -41,11 +41,11 @@
     }
   ],
   "dependencies": {
-    "owl-deepcopy": "~0.0.1"
+    "owl-deepcopy": "~0.0.4"
   },
   "devDependencies": {
-    "mocha": "^1.21.4",
-    "mongoose": "^3.8.15",
-    "should": "^4.0.4"
+    "mocha": "^2.1.0",
+    "mongoose": "^3.8.24",
+    "should": "^5.0.1"
   }
 }
